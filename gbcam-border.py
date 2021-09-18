@@ -58,7 +58,16 @@ image_open_widget = ttk.Button(
   text='Select an image',
   command=select_file
 )
-#palette_select_widget = 
 
+image_save_widget = ttk.Button(
+  window,
+  text='Save image',
+  command=save_file
+ )
+#palette_select_widget = 
+image_preview_widget.pack()
+image_open_widget.pack()
+border_list_widget.pack()
+image_save_widget.pack()
 
 window.mainloop()
