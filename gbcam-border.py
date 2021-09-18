@@ -11,8 +11,9 @@ WILD_SIZE = (0,0)
 border_path = Path('\borders\')    
 border_list = list(border_path.iterdir)
 
-border_var=tk.StringVar(None,border_list(0))
-scaling_var=tk.StringVar(None,'1')
+border_var=tk.StringVar(None,border_list[0])
+scaling_list=[x for x in range(1:6)]
+scaling_var=tk.StringVar(None,scaling_list[0])
 
 def select_image():
     global image
@@ -34,6 +35,8 @@ def process_image():
     #apply current settings to image object
 def save_file():
     #apply scaling
+    file = fd.asksaveasfile(#initialfile=)
+    file.save(image)
     #if single image selected
         #save current working preview image as filename+bordername
 
@@ -46,7 +49,6 @@ def save_file():
 window=tk.Tk()
 window.resizable(0,0)
 window.title("gbcam-border")
-main_frame=ttk.Frame()
 
 border_list_widget = ttk.Combobox(window,textvariable=border_var,values=border_list,state="readonly")
 border_list_widget.bind('<<ComboboxSelected>>',process_image)
